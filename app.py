@@ -10,7 +10,7 @@ from streamlit_folium import folium_static
 def read_csv(path):
     return pd.read_csv(path, compression='gzip', sep='\t', quotechar='"')
 
-housing_price_df = read_csv('../input/state_market_tracker.tsv000.gz')
+housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
 housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-09-01') & (housing_price_df['period_begin']<='2023-09-01')]
 
@@ -19,7 +19,7 @@ def read_file(path):
     return gpd.read_file(path)
 
 #Read the geojson file
-gdf = read_file('../input/georef-united-states-of-america-state.geojson')
+gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 
 #Merge the housing market data and geojson file into one dataframe
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
