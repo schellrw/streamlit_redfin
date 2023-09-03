@@ -12,7 +12,7 @@ def read_csv(path):
 
 housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
-housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-09-01') & (housing_price_df['period_begin']<='2023-09-01')]
+housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-01-01') & (housing_price_df['period_begin']<='2023-09-01')]
 
 @st.cache
 def read_file(path):
@@ -23,7 +23,8 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 
 #Merge the housing market data and geojson file into one dataframe
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
-df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code','ste_name','ste_stusps_code','geometry']]
+df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold',
+                     'state_code','ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code','geometry']]
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 
 #Add sidebar to the app
@@ -52,7 +53,7 @@ with col3:
 #Update the data frame accordingly based on user input
 df_final = df_final[df_final["period_begin"]==year_month]
 df_final = df_final[df_final["property_type"]==prop_type]
-df_final = df_final[['period_begin','period_end','period_duration','property_type',metrics,'state_code','name','stusab','geometry']]
+df_final = df_final[['period_begin','period_end','period_duration','property_type',metrics,'state_code','ste_name','ste_area_code','ste_type','ste_stusps_code','geometry']]
 
 #st.write(df_final)
 
@@ -64,9 +65,9 @@ folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 choropleth1 = folium.Choropleth(
     geo_data='./us-state-boundaries.geojson',       # Geojson file for the United States
     name='Choropleth Map of U.S. Housing Prices',
-    data=df_final,                                  # df_final from the data preparation
+    data=df_final,                                  # df from the data preparation and user selection
     columns=['state_code', metrics],                # 'state code' and 'metrics' are the two columns in the dataframe that we use to grab the median sales price for each state and plot it in the choropleth map
-    key_on='feature.properties.stusab',             # key in the geojson file that we use to grab the geometries for each state in order to add the geographical boundary layers to the map
+    key_on='feature.properties.ste_stusps_code',    # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
     fill_opacity=0.7,
