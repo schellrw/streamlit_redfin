@@ -26,7 +26,8 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
 df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold',
                      'state_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
-df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
+####df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
+df_final = df_final[~df_final.isna()].reset_index(drop=True)
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
 df_final = df_final.rename(columns={'period_begin':"Time Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",'median_sale_price_yoy':"Median Sale Price YoY",
