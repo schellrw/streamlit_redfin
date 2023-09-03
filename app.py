@@ -104,4 +104,4 @@ geojson1 = folium.features.GeoJson(
                    max_width=800,),
                     highlight_function=lambda x: {'weight':3,'fillColor':'grey'},
                    ).add_to(m)
-#folium_static(m)
+folium_static(m)
