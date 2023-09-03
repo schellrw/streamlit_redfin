@@ -44,10 +44,11 @@ df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Typ
                                     'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State",
                                     'geometry':"Location"})
 
-df_final['Median Sale Price'] = df_final['Median Sale Price'].astype(str) #(int)
-df_final['Median Sale Price YoY'] = df_final['Median Sale Price YoY'].astype(str) #(int)
-df_final['Homes Sold'] = df_final['Homes Sold'].astype(str) #(int)
-df_final['Month'] = pd.to_datetime(df_final['Period'], format='%Y-%m-%d').dt.to_period('M')
+df_final["Median Sale Price"] = df_final["Median Sale Price"].astype(str) #(int)
+df_final["Median Sale Price YoY"] = df_final["Median Sale Price YoY"].astype(str) #(int)
+df_final["Homes Sold"] = df_final["Homes Sold"].astype(str) #(int)
+df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_period('M')
+df_final["Month"] = df_final["Month"].astype(str) #(int)
 
 #df_final['Month'] = dt.datetime(df_final['Month'], format='%Y-').dt.to_period('M')
 #pd.to_datetime(df_final['Month'], format='%b %Y')
