@@ -26,7 +26,7 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 #Merge the housing market data and geojson file into one dataframe
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
 df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy',
-                     'homes_sold','state_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
+                     'homes_sold','state_code','ste_stusps_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
@@ -55,7 +55,7 @@ with col1:
 
 with col2:
      state_list = df_final['State'].unique().tolist()
-     state_list.sort(reverse=True)
+     state_list.sort(reverse=False)
      state = st.selectbox("Select State", state_list, index=0)
 
 with col3:
@@ -69,7 +69,7 @@ with col4:
 df_final = df_final[df_final["Month"]==year_month]
 df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
-df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics]] #,'geometry']]
+df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics,'ste_stusps_code','geometry']]
 
 #st.write(df_final)
 
@@ -83,7 +83,7 @@ choropleth1 = folium.Choropleth(
     name='Choropleth Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
     columns=["State", metrics],                                             # 'state code' and 'metrics' to get the median sales price for each state
-    key_on='feature.properties.State', #.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
+    key_on='feature.properties.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
     fill_opacity=0.7,
