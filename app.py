@@ -6,7 +6,7 @@ from folium.features import GeoJsonPopup, GeoJsonTooltip
 import streamlit as st
 from streamlit_folium import folium_static
 
-@st.cache
+@st.cache_data
 def read_csv(path):
     return pd.read_csv(path, compression='gzip', sep='\t', quotechar='"')
 
@@ -14,7 +14,7 @@ housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
 housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-01-01') & (housing_price_df['period_begin']<='2023-09-01')]
 
-@st.cache
+@st.cache_data
 def read_file(path):
     return gpd.read_file(path)
 
