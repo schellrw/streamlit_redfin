@@ -25,8 +25,12 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 #Merge the housing market data and geojson file into one dataframe
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
 df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold',
-                     'state_code','ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code','geometry']]
+                     'state_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
+
+####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
+df_final = df_final.rename(columns={'period_begin':"Time Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",'median_sale_price_yoy':"Median Sale Price YoY",
+                                'homes_sold':"Homes Sold",'state_code':"State"})
 
 #Add sidebar to the app
 st.sidebar.markdown("### Redfin Housing Data")
@@ -37,24 +41,29 @@ st.title("U.S. Real Estate Activity Heatmap")
 st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
 
 #Create three columns/filters
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-     period_list = df_final["period_begin"].unique().tolist()
-     period_list.sort(reverse=True)
-     year_month = st.selectbox("Snapshot Month", period_list, index=0)
+     period_list = df_final['Time Period'].unique().tolist()
+     #period_list.sort(reverse=True)
+     year_month = st.selectbox("Select Year-Month", period_list, index=0)
 
 with col2:
+     state_list = df_final['State'].unique().tolist()
+     state = st.selectbox("Select State", state_list, index=0)
+
+with col3:
      prop_type = st.selectbox(
                 "View by Property Type", ['All Residential', 'Single Family Residential', 'Townhouse','Condo/Co-op','Single Units Only','Multi-Family (2-4 Unit)'] , index=0)
 
-with col3:
-     metrics = st.selectbox("Select Housing Metrics", ["median_sale_price","median_sale_price_yoy", "homes_sold"], index=0)
+with col4:
+     metrics = st.selectbox("Select Housing Metrics", ["Median Sale Price","Median Sale Price YoY", "Homes Sold"], index=0)
 
 #Update the data frame accordingly based on user input
-df_final = df_final[df_final["period_begin"]==year_month]
-df_final = df_final[df_final["property_type"]==prop_type]
-df_final = df_final[['period_begin','period_end','period_duration','property_type',metrics,'state_code','ste_name','ste_area_code','ste_type','ste_stusps_code','geometry']]
+df_final = df_final[df_final["Time Period"]==year_month]
+df_final = df_final[df_final["State"]==state]
+df_final = df_final[df_final["Type of Property"]==prop_type]
+df_final = df_final[["Time Period", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics]] #,'geometry']]
 
 #st.write(df_final)
 
