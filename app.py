@@ -27,10 +27,12 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
 df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy',
                      'homes_sold','state_code','ste_stusps_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
-df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
-df_final = df_final[~df_final['median_sale_price'].isna()].reset_index(drop=True)
-df_final = df_final[~df_final['median_sale_price_yoy'].isna()].reset_index(drop=True)
-df_final = df_final[~df_final['homes_sold'].isna()].reset_index(drop=True)
+# df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
+# df_final = df_final[~df_final['median_sale_price'].isna()].reset_index(drop=True)
+# df_final = df_final[~df_final['median_sale_price_yoy'].isna()].reset_index(drop=True)
+# df_final = df_final[~df_final['homes_sold'].isna()].reset_index(drop=True)
+
+df_final = df_final.dropna(axis=0, inplace=True, ignore_index=True)
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
 df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
@@ -88,7 +90,7 @@ folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
     geo_data='./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
-    name='Choropleth Map of U.S. Housing Prices',
+    name='Heat Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
     columns=["State", metrics],                                             # 'state code' and 'metrics' to get the median sales price for each state
     key_on='feature.properties.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
@@ -112,7 +114,7 @@ geojson1 = folium.features.GeoJson(
                    fields=["Month",
                            "State",
                            metrics+':',],
-                   aliases=['period_begin',
+                   aliases=['Period',
                            'ste_stusps_code',
                             metrics+':'],
                    localize=True,
