@@ -12,7 +12,7 @@ def read_csv(path):
 
 housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
-housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-01-01') & (housing_price_df['period_begin']<='2023-09-01')]
+housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-01-01') & (housing_price_df['period_begin']<='2023-07-01')]
 
 @st.cache_data
 def read_file(path):
@@ -29,8 +29,9 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 
 #Add sidebar to the app
-st.sidebar.markdown("### Redfin Housing Data")
-st.sidebar.markdown("This app is built using Streamlit to help visualize activity in the U.S. real estate market. All data from: https://www.redfin.com/news/data-center/")
+st.sidebar.markdown("### no puedo limpiar los platos")
+#st.sidebar.markdown("### Redfin Housing Data")
+st.sidebar.markdown("This app is built using Streamlit to help visualize activity in the U.S. real estate market. Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center/")
 st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw")
 #Add title and subtitle to the main interface of the app
 st.title("U.S. Real Estate Activity Heatmap")
