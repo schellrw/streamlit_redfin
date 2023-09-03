@@ -1,5 +1,6 @@
 #Import Python Libraries
 import pandas as pd
+import datetime as dt
 import folium
 import geopandas as gpd
 from folium.features import GeoJsonPopup, GeoJsonTooltip
@@ -12,7 +13,7 @@ def read_csv(path):
 
 housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
-housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-01-01') & (housing_price_df['period_begin']<='2023-07-01')]
+housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-09-01') & (housing_price_df['period_begin']<='2023-09-01')]
 
 @st.cache_data
 def read_file(path):
@@ -24,14 +25,16 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 
 #Merge the housing market data and geojson file into one dataframe
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True)
-df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold',
-                     'state_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
-####df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
-df_final = df_final[~df_final.isna()].reset_index(drop=True)
+df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy',
+                     'homes_sold','state_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
+df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
+
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
-df_final = df_final.rename(columns={'period_begin':"Time Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",'median_sale_price_yoy':"Median Sale Price YoY",
-                                'homes_sold':"Homes Sold",'state_code':"State"})
+df_final = df_final.rename(columns={'period_begin':"Month",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
+                                    'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State",
+                                    'geometry':"Location"})
+df_final['Month'] = pd.to_datetime(df_final['Month'], format='%b-%y')
 
 #Add sidebar to the app
 st.sidebar.markdown("### Redfin Housing Data")
@@ -45,8 +48,8 @@ st.markdown("Where are the hottest housing markets in the U.S.?  Select the hous
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-     period_list = df_final['Time Period'].unique().tolist()
-     #period_list.sort(reverse=True)
+     period_list = df_final['Month'].unique().tolist()
+     period_list.sort(reverse=True)
      year_month = st.selectbox("Select Year-Month", period_list, index=0)
 
 with col2:
@@ -78,7 +81,7 @@ choropleth1 = folium.Choropleth(
     name='Choropleth Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
     columns=["State", metrics],                                             # 'state code' and 'metrics' to get the median sales price for each state
-    key_on='feature.properties.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
+    key_on='feature.properties.State', #.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
     fill_opacity=0.7,
@@ -96,11 +99,11 @@ geojson1 = folium.features.GeoJson(
                smooth_factor=2,
                style_function=lambda x: {'color':'black','fillColor':'transparent','weight':0.5},
                tooltip=folium.features.GeoJsonTooltip(
-                   fields=["Time Period",
+                   fields=["Month",
                            "State",
                            metrics+':',],
-                   aliases=["Time Period",
-                           "State",
+                   aliases=['period_begin',
+                           'ste_stusps_code',
                             metrics+':'],
                    localize=True,
                    sticky=False,
