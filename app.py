@@ -64,10 +64,10 @@ with col4:
      metrics = st.selectbox("Select Housing Metrics", ["Median Sale Price","Median Sale Price YoY", "Homes Sold"], index=0)
 
 #Update the data frame accordingly based on user input
-df_final = df_final[df_final["Time Period"]==year_month]
+df_final = df_final[df_final["Month"]==year_month]
 df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
-df_final = df_final[["Time Period", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics]] #,'geometry']]
+df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics]] #,'geometry']]
 
 #st.write(df_final)
 
