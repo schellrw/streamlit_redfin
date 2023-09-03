@@ -29,7 +29,7 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 
 #Add sidebar to the app
-st.sidebar.markdown("### no puedo limpiar los platos")
+st.sidebar.markdown("### Marilyn sux")
 #st.sidebar.markdown("### Redfin Housing Data")
 st.sidebar.markdown("This app is built using Streamlit to help visualize activity in the U.S. real estate market. Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center/")
 st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw")
