@@ -56,7 +56,7 @@ df_final = df_final[df_final["period_begin"]==year_month]
 df_final = df_final[df_final["property_type"]==prop_type]
 df_final = df_final[['period_begin','period_end','period_duration','property_type',metrics,'state_code','ste_name','ste_area_code','ste_type','ste_stusps_code','geometry']]
 
-st.write(df_final)
+#st.write(df_final)
 
 #Initiate a folium map
 m = folium.Map(location=[40, -100], zoom_start=4,tiles=None)
