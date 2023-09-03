@@ -47,43 +47,47 @@ df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Typ
 df_final["Median Sale Price"] = df_final["Median Sale Price"].astype(str) #(int)
 df_final["Median Sale Price YoY"] = df_final["Median Sale Price YoY"].astype(str) #(int)
 df_final["Homes Sold"] = df_final["Homes Sold"].astype(str) #(int)
-df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_period('M')
-df_final["Month"] = df_final["Month"].astype(str) #(int)
+####df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_period('M')
+df_final["Month"] = df_final["Period"].astype(str) #(int)
 
 #df_final['Month'] = dt.datetime(df_final['Month'], format='%Y-').dt.to_period('M')
 #pd.to_datetime(df_final['Month'], format='%b %Y')
 
 #Add sidebar to the app
-st.sidebar.markdown("### Redfin Housing Data")
-st.sidebar.markdown("This app is built using Streamlit to help visualize activity in the U.S. real estate market. Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center/")
-st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw/streamlit_redfin/")
+st.sidebar.markdown("## Redfin Housing Data [Sep 2022 to July 2023]")
+st.sidebar.markdown("### Sep 2022 to July 2023")
+st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the U.S. real estate market.")
+st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center")
+st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw/streamlit_redfin")
 #Add title and subtitle to the main interface of the app
 st.title("U.S. Real Estate Activity Heatmap")
 st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
 
 #Create three columns/filters
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 
 with col1:
      period_list = df_final['Month'].unique().tolist()
      period_list.sort(reverse=True)
      year_month = st.selectbox("Select Year-Month", period_list, index=0)
 
+# with col2:
+#      state_list = df_final['State'].unique().tolist()
+#      state_list.sort(reverse=False)
+#      state = st.selectbox("Select State", state_list, index=0)
+
+# with col3:
 with col2:
-     state_list = df_final['State'].unique().tolist()
-     state_list.sort(reverse=False)
-     state = st.selectbox("Select State", state_list, index=0)
+     prop_type = st.selectbox("View by Property Type", ['All Residential', 'Single Family Residential', 
+                                                        'Townhouse','Condo/Co-op','Single Units Only','Multi-Family (2-4 Unit)'] , index=0)
 
+# with col4:
 with col3:
-     prop_type = st.selectbox(
-                "View by Property Type", ['All Residential', 'Single Family Residential', 'Townhouse','Condo/Co-op','Single Units Only','Multi-Family (2-4 Unit)'] , index=0)
-
-with col4:
      metrics = st.selectbox("Select Housing Metrics", ["Median Sale Price","Median Sale Price YoY", "Homes Sold"], index=0)
 
 #Update the data frame accordingly based on user input
 df_final = df_final[df_final["Month"]==year_month]
-df_final = df_final[df_final["State"]==state]
+#df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
 df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", 
                      metrics,'ste_stusps_code','Location']].reset_index(drop=True)
