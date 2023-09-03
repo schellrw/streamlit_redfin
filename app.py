@@ -69,7 +69,7 @@ with col4:
 df_final = df_final[df_final["Month"]==year_month]
 df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
-df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics,'ste_stusps_code','geometry']]
+df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics,'ste_stusps_code','Location']]
 
 #st.write(df_final)
 
