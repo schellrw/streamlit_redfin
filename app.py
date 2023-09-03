@@ -33,7 +33,7 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
 # df_final = df_final[~df_final['homes_sold'].isna()].reset_index(drop=True)
 
 df_final = df_final.dropna(axis=0, how='any', inplace=True, subset=['period_begin','property_type', 'median_sale_price', 'median_sale_price_yoy',
-                                                                    'homes_sold']).reset_index(drop=True) #, ignore_index=True)
+                                                                    'homes_sold']) #.reset_index(drop=True) #, ignore_index=True)
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
 df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
@@ -80,7 +80,8 @@ with col4:
 df_final = df_final[df_final["Month"]==year_month]
 df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
-df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", metrics,'ste_stusps_code','Location']]
+df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", 
+                     metrics,'ste_stusps_code','Location']].reset_index(drop=True)
 
 #st.write(df_final)
 
