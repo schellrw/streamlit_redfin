@@ -2,8 +2,9 @@
 import pandas as pd
 import datetime as dt
 import folium
+#from folium import Choropleth
+from folium.features import GeoJson, GeoJsonTooltip #, geojsonpopup
 import geopandas as gpd
-from folium.features import GeoJsonPopup, GeoJsonTooltip
 import streamlit as st
 from streamlit_folium import folium_static
 
