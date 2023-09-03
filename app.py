@@ -76,7 +76,7 @@ choropleth1 = folium.Choropleth(
     geo_data='./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
     name='Choropleth Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
-    columns=['state_code', metrics],                                        # 'state code' and 'metrics' to get the median sales price for each state
+    columns=["State", metrics],                                             # 'state code' and 'metrics' to get the median sales price for each state
     key_on='feature.properties.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
@@ -95,14 +95,12 @@ geojson1 = folium.features.GeoJson(
                smooth_factor=2,
                style_function=lambda x: {'color':'black','fillColor':'transparent','weight':0.5},
                tooltip=folium.features.GeoJsonTooltip(
-                   fields=['period_begin',
-                           'period_end',
-                           'name',
-                           metrics,],
-                   aliases=["Period Begin:",
-                            'Period End:',
-                            'State:',
-                            metrics+":"],
+                   fields=["Time Period",
+                           "State",
+                           metrics+':',],
+                   aliases=["Time Period",
+                           "State",
+                            metrics+':'],
                    localize=True,
                    sticky=False,
                    labels=True,
