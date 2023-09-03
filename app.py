@@ -34,7 +34,7 @@ st.sidebar.markdown("This app is built using Streamlit to help visualize activit
 st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw")
 #Add title and subtitle to the main interface of the app
 st.title("U.S. Real Estate Activity Heatmap")
-st.markdown("Where are the hottest housing markets in the U.S.? Select the housing market metrics you are interested in and your insights are just a couple clicks away. Hover over the map to view more details.")
+st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
 
 #Create three columns/filters
 col1, col2, col3 = st.columns(3)
