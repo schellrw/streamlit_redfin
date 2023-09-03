@@ -91,14 +91,16 @@ df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", 
 
 #Initiate a folium map
 m = folium.Map(location=[40, -100], zoom_start=4,tiles=None)
-folium.TileLayer('CartoDB positron',name="Light Map",control=False).add_to(m)
+# folium.TileLayer('DarkMatter', "Dark Map", control=False).add_to(m)
+# folium.TileLayer('OpenStreetMap').add_to(m)
+folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
     geo_data='./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
     name='Heat Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
-    columns=["State", metrics],                                             # 'state code' and 'metrics' to get the median sales price for each state
+    columns=['ste_stusps_code', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
     key_on='feature.properties.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
