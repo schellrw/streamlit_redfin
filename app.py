@@ -32,7 +32,7 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
 # df_final = df_final[~df_final['median_sale_price_yoy'].isna()].reset_index(drop=True)
 # df_final = df_final[~df_final['homes_sold'].isna()].reset_index(drop=True)
 
-df_final = df_final.dropna(axis=0, inplace=True).reset_index(drop=True)
+df_final = df_final.dropna(axis=0, inplace=True, ignore_index=True)
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
 df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
