@@ -29,12 +29,11 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
                      'homes_sold','state_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 
-
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
-df_final = df_final.rename(columns={'period_begin':"Month",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
+df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
                                     'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State",
                                     'geometry':"Location"})
-df_final['Month'] = pd.to_datetime(df_final['Month'], format='%Y-%m')
+df_final['Month'] = pd.to_datetime(df_final['Period'], format='%Y-%m')
 
 #Add sidebar to the app
 st.sidebar.markdown("### Redfin Housing Data")
@@ -54,6 +53,7 @@ with col1:
 
 with col2:
      state_list = df_final['State'].unique().tolist()
+     state_list.sort(reverse=True)
      state = st.selectbox("Select State", state_list, index=0)
 
 with col3:
