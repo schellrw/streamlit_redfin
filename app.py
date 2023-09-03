@@ -28,6 +28,9 @@ df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="stat
 df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy',
                      'homes_sold','state_code','ste_stusps_code','geometry']] #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
 df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
+df_final = df_final[~df_final['median_sale_price'].isna()].reset_index(drop=True)
+df_final = df_final[~df_final['median_sale_price_yoy'].isna()].reset_index(drop=True)
+df_final = df_final[~df_final['homes_sold'].isna()].reset_index(drop=True)
 
 ####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
 df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
@@ -45,7 +48,7 @@ df_final['Month'] = pd.to_datetime(df_final['Period'], format='%Y-%m-%d').dt.to_
 #Add sidebar to the app
 st.sidebar.markdown("### Redfin Housing Data")
 st.sidebar.markdown("This app is built using Streamlit to help visualize activity in the U.S. real estate market. Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center/")
-st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw")
+st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw/streamlit_redfin/")
 #Add title and subtitle to the main interface of the app
 st.title("U.S. Real Estate Activity Heatmap")
 st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
