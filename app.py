@@ -77,6 +77,8 @@ choropleth1 = folium.Choropleth(
     highlight=True,
     line_color='black').geojson.add_to(m)
 
+folium_static(m)
+
 #Add tooltips to the map
 geojson1 = folium.features.GeoJson(
                data=df_final,
@@ -104,4 +106,3 @@ geojson1 = folium.features.GeoJson(
                    max_width=800,),
                     highlight_function=lambda x: {'weight':3,'fillColor':'grey'},
                    ).add_to(m)
-folium_static(m)
