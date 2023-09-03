@@ -3,7 +3,7 @@ import pandas as pd
 import datetime as dt
 import folium
 #from folium import Choropleth
-from folium.features import GeoJson, GeoJsonTooltip #, geojsonpopup
+#from folium.features import GeoJson, GeoJsonTooltip #, geojsonpopup
 import geopandas as gpd
 import streamlit as st
 from streamlit_folium import folium_static
@@ -54,7 +54,7 @@ df_final["Month"] = df_final["Period"].astype(str) #(int)
 #pd.to_datetime(df_final['Month'], format='%b %Y')
 
 #Add sidebar to the app
-st.sidebar.markdown("## Redfin Housing Data [Sep 2022 to July 2023]")
+st.sidebar.markdown("# Redfin Housing Data")
 st.sidebar.markdown("### Sep 2022 to July 2023")
 st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the U.S. real estate market.")
 st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center")
