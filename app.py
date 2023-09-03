@@ -33,8 +33,9 @@ df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
                                     'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State",
                                     'geometry':"Location"})
-df_final['Month'] = pd.to_datetime(df_final['Period'], format='%Y-%m-%d').dt.to_period('M')
-df_final['Month'] = dt.df_final['Month'].format('%b-%Y')
+df_final['Month'] = pd.to_datetime(df_final['Period'], format='%b-%Y').dt.to_period('M')
+#df_final['Month'] = dt.datetime(df_final['Month'], format='%b %Y')
+#pd.to_datetime(df_final['Month'], format='%b %Y')
 
 #Add sidebar to the app
 st.sidebar.markdown("### Redfin Housing Data")
