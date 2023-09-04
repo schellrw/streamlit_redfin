@@ -47,36 +47,43 @@ st.title("U.S. Real Estate Activity Heatmap")
 st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
 
 #Create three columns/filters
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3) ########), col4 = st.columns(4)
 
 with col1:
      period_list = df_final['Month'].unique().tolist()
      period_list.sort(reverse=True)
      year_month = st.selectbox("Select Year-Month", period_list, index=0)
 
+# with col2:
+#      state_list = df_final['State'].astype(str).unique().tolist()
+#      state_sorted = sorted(state_list) # state_list.sort(reverse=False)
+#      state = st.selectbox("Select State", state_sorted, index=0)
+
 with col2:
-     state_list = df_final['State'].astype(str).unique().tolist()
-     state_sorted = sorted(state_list) # state_list.sort(reverse=False)
-     state = st.selectbox("Select State", state_sorted, index=0)
+     prop_type = st.selectbox("View by Property Type", ['All Residential','Single Family Residential','Townhouse',
+                                                'Condo/Co-op','Single Units Only','Multi-Family (2-4 Unit)'], index=0)
 
 with col3:
-     prop_type = st.selectbox("View by Property Type", ['All Residential', 'Single Family Residential', 
-                                                        'Townhouse','Condo/Co-op','Single Units Only','Multi-Family (2-4 Unit)'] , index=0)
-
-with col4:
      metrics = st.selectbox("Select Housing Metrics", ["Median Sale Price","Median Sale Price YoY", "Homes Sold"], index=0)
 
-#Update the data frame accordingly based on user input
+# update data frame based on user selections
 df_final = df_final[df_final["Month"]==year_month]
-df_final = df_final[df_final["State"]==state]
+#df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
-df_final = df_final[["Month", "State", "Type of Property", metrics,'geometry','ste_stusps_code']]
+df_final = df_final[["Month", 'ste_stusps_code', "Type of Property", metrics,'geometry']] #,'ste_stusps_code']]
+
+@st.cache_data
+def write_df(df):
+    return st.write(df)
+
+# Output write info
+write_df(df_final) 
 
 #Initiate a folium map
 m = folium.Map(location=[40, -96], zoom_start=4,tiles=None)
-folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
+## folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 ## Other map layers:
-## folium.TileLayer('DarkMatter',"Dark Map",control=False).add_to(m) #### folium.TileLayer('OpenStreetMap').add_to(m)
+folium.TileLayer('DarkMatter',"Dark Map",control=False).add_to(m) #### folium.TileLayer('OpenStreetMap').add_to(m)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
@@ -92,9 +99,7 @@ choropleth1 = folium.Choropleth(
     legend_name='Housing Market Metrics',
     highlight=True,
     line_color='black').geojson.add_to(m)
-
 folium_static(m)
-
 #Add tooltips to the map
 geojson1 = folium.features.GeoJson(
                data=df_final['geometry'],
