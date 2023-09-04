@@ -73,7 +73,7 @@ with col1:
 
 with col2:
      state_list = df_final['State'].unique().tolist()
-     state_list.sort(reverse=False)
+     state_list.sort(alpha=True, reverse=False)
      state = st.selectbox("Select State", state_list, index=0)
 
 with col3:
