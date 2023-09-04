@@ -42,8 +42,7 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
 df_final = df_final.fillna(0) #.reset_index(drop=True)
 
 df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Type of Property",'median_sale_price':"Median Sale Price",
-                                    'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State",
-                                    'geometry':"Location"})
+                                    'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State"})
 
 df_final["Median Sale Price"] = df_final["Median Sale Price"].astype(int)
 df_final["Median Sale Price YoY"] = df_final["Median Sale Price YoY"].astype(int)
@@ -91,7 +90,7 @@ df_final = df_final[df_final["Month"]==year_month]
 #df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
 df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", 
-                     metrics,'ste_stusps_code','Location']].reset_index(drop=True)
+                     metrics,'ste_stusps_code','geometry']].reset_index(drop=True)
 
 #st.write(df_final)
 
