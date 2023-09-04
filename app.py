@@ -60,7 +60,7 @@ st.title(":red[Redfin U.S. Real Estate Heatmap]")
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
 st.subheader(":blue[Your company's information paired with our market research and technology solutions are exaclty what you've been looking for.]") ##] :red[exaclty what you've been looking for.]")
-st.subheader(":blue[Actionable insights and opportunities for your business to] :red[(Pre)Dominate the Competition]", divider="rainbow")  #:blue[the competition.]", divider="rainbow")
+st.subheader(":blue[Actionable insights and opportunities for your business to] :red[Predominate the Competition]", divider="rainbow")  #:blue[the competition.]", divider="rainbow")
 #st.subheader(":red[Pre-Dominantly]", divider="rainbow")
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
