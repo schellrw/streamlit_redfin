@@ -58,9 +58,9 @@ st.sidebar.markdown(":gray[###### Copyright (c) 2023 Robert W Schell]")
 st.title(":red[Redfin U.S. Real Estate Heatmap]")
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
-st.subheader(":blue[Your company's information paired with our market research and technology solutions.        Actionable insights and opportunities for your business"])
+st.subheader(":blue[Your company's information paired with our market research and technology solutions.  Actionable insights and opportunities for your business]")
 st.subheader(":violet[Take out your competition]", divider="rainbow")
-st.subheader(":red[Predominantly]")
+st.subheader(":red[Predominantly]", divider="rainbow")
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
 st.markdown("### https://artificialintelligentsia.com/")
