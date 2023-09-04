@@ -102,8 +102,7 @@ folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 # geo_data = df_final['geometry']
 # df_ungeo = df_final.drop(['geometry'], axis=1)
 
-df_final = df_final.replace(np.nan, 0)
-df_final = df_final.replace(0, pd.NA)
+df_final = df_final.replace(np.nan, pd.NA)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
