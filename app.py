@@ -72,14 +72,14 @@ df_final = df_final[df_final["Month"]==year_month]
 df_final = df_final[df_final["Type of Property"]==prop_type]
 df_final = df_final[["Month", 'ste_stusps_code', "Type of Property", metrics,'geometry']] #,'ste_stusps_code']]
 
-@st.cache_data
-def write_df(df):
-    dfx = st.write(df)
-    return dfx
+# @st.cache_data
+# def write_df(df):
+#     dfx = st.write(df)
+#     return dfx
 
-# Output write info
-df_io = write_df(df_final) 
-df_io
+# # Output write info
+# df_io = write_df(df_final) 
+# df_io
 
 #Initiate a folium map
 m = folium.Map(location=[40, -96], zoom_start=4,tiles=None)
