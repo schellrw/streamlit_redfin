@@ -64,30 +64,28 @@ st.title("U.S. Real Estate Activity Heatmap")
 st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
 
 #Create three columns/filters
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
      period_list = df_final['Month'].unique().tolist()
      period_list.sort(reverse=True)
      year_month = st.selectbox("Select Year-Month", period_list, index=0)
 
-# with col2:
-#      state_list = df_final['State'].unique().tolist()
-#      state_list.sort(reverse=False)
-#      state = st.selectbox("Select State", state_list, index=0)
-
-# with col3:
 with col2:
+     state_list = df_final['State'].unique().tolist()
+     state_list.sort(reverse=False)
+     state = st.selectbox("Select State", state_list, index=0)
+
+with col3:
      prop_type = st.selectbox("View by Property Type", ['All Residential', 'Single Family Residential', 
                                                         'Townhouse','Condo/Co-op','Single Units Only','Multi-Family (2-4 Unit)'] , index=0)
 
-# with col4:
-with col3:
+with col4:
      metrics = st.selectbox("Select Housing Metrics", ["Median Sale Price","Median Sale Price YoY", "Homes Sold"], index=0)
 
 #Update the data frame accordingly based on user input
 df_final = df_final[df_final["Month"]==year_month]
-#df_final = df_final[df_final["State"]==state]
+df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
 df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", 
                      metrics,'ste_stusps_code','geometry']]
@@ -95,7 +93,7 @@ df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", 
 #st.write(df_final)
 
 #Initiate a folium map
-m = folium.Map(location=[40, -100], zoom_start=4,tiles=None)
+m = folium.Map(location=[40, -96], zoom_start=4,tiles=None)
 # folium.TileLayer('DarkMatter', "Dark Map", control=False).add_to(m)
 # folium.TileLayer('OpenStreetMap').add_to(m)
 folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
@@ -105,7 +103,7 @@ df_ungeo = df_final.drop(['geometry'], axis=1)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
-    geo_data=gdf.to_json(), #'./input/georef-united-states-of-america-state.geojson', #geo_data.to_json(), ##df_final.to_json(),  ####       # Geojson file for the United States
+    geo_data='./input/georef-united-states-of-america-state.geojson', #geo_data.to_json(), ##df_final.to_json(),  ####       # Geojson file for the United States
     name="Choropleth (Heat Map) of U.S. Housing Prices",
     data=df_final, #df_ungeo, #.to_json(), #df_ungeo, #ungeo, #.to_json(), #  df_final.to_json(),                                                          # df from the data preparation and user selection
     columns=['State', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
