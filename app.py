@@ -60,7 +60,7 @@ st.title('''
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
 st.subheader('''
-             :blue[Insight and opportunity for your business.  Your data paired with market trends and information from many sources, public or private.  Take out the competition.  Pre Dominantly''', divider="rainbow")
+             :blue[Insight and opportunity for your business.  Your data paired with market trends and information from many sources, public or private.  Take out the competition.]             :red[Predominantly]''', divider="rainbow")
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
 st.markdown("### https://artificialintelligentsia.com/")
