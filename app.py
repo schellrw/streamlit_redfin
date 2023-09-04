@@ -50,8 +50,8 @@ st.sidebar.markdown(":blue[This app was built using Python and Streamlit to visu
 st.sidebar.markdown(":green[Developer: Robert W Schell, Data Scientist at Artificial Intelligentsia, LLC]")
 st.sidebar.markdown(":green[Github:    https://github.com/schellrw/]")
 st.sidebar.markdown(":green[LinkedIn:  https://linkedin.com/in/schellr/]")
-st.sidebar.markdown(":violet[###### MIT License]")
-st.sidebar.markdown(":violet[###### Copyright (c) 2023 Robert W Schell]")
+st.sidebar.markdown(":green[###### MIT License]")
+st.sidebar.markdown(":[###### Copyright (c) 2023 Robert W Schell]")
 
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
@@ -60,7 +60,12 @@ st.title('''
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
 st.subheader('''
-             :blue[Insight and opportunity for your business.  Your data paired with market trends and information from many sources, public or private.  Take out the competition.]             :red[Predominantly]''', divider="rainbow")
+             :blue[Insight and opportunity for your business.]  
+             :blue[Your data paired with market trends and information acquired from reputable public sources, or private.]
+
+             :orange[**Take out the competition**]
+
+             :red[***Predominantly***]''', divider="rainbow")
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
 st.markdown("### https://artificialintelligentsia.com/")
