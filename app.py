@@ -25,8 +25,8 @@ gdf = read_file('./input/georef-united-states-of-america-state.geojson')
 
 #Merge the housing market data and geojson file into one dataframe
 df_final = gdf.merge(housing_price_df, left_on="ste_stusps_code", right_on="state_code", how="outer").reset_index(drop=True, inplace=True)
-df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy',
-                     'homes_sold','state_code','ste_stusps_code','geometry']].reset_index(drop=True, inplace=True) #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
+# df_final = df_final[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy',
+#                      'homes_sold','state_code','ste_stusps_code','geometry']].reset_index(drop=True, inplace=True) #'ste_code','ste_name','ste_area_code','ste_type','ste_stusps_code'
 # df_final = df_final[~df_final['period_begin'].isna()].reset_index(drop=True)
 # df_final = df_final[~df_final['median_sale_price'].isna()].reset_index(drop=True)
 # df_final = df_final[~df_final['median_sale_price_yoy'].isna()].reset_index(drop=True)
@@ -36,7 +36,7 @@ df_final = df_final[['period_begin','period_end','period_duration','property_typ
                                                                     # ['period_begin','property_type', 'median_sale_price', 'median_sale_price_yoy',
                                                                     # 'homes_sold']) #.reset_index(drop=True) #, ignore_index=True)
 
-####df = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type', 'ste_stusps_code'], axis=1)
+df_final = df_final.drop(['ste_code', 'ste_name', 'ste_area_code', 'ste_type'], axis=1)
 
 # df_final = df_final.dropna().reset_index(drop=True)
 #df_final = df_final.fillna(0) #.reset_index(drop=True)
