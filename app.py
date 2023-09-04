@@ -47,18 +47,21 @@ st.sidebar.markdown("### https://artificialintelligentsia.com/")
 st.sidebar.markdown("##### repo for this site:  https://github.com/schellrw/streamlit_redfin")
 st.sidebar.markdown("*All data provided by Redfin, a national real estate brokerage:*  https://www.redfin.com/news/data-center")
 st.sidebar.markdown(":blue[This app was built using Python and Streamlit to visualize activity in the United States real estate market.]")
-st.sidebar.markdown(":green[Developer: Robert W Schell, Data Scientist at Artificial Intelligentsia, LLC]")
-st.sidebar.markdown(":green[Github:    https://github.com/schellrw/]")
-st.sidebar.markdown(":green[LinkedIn:  https://linkedin.com/in/schellr/]")
-st.sidebar.markdown(":green[###### MIT License]")
-st.sidebar.markdown(":[###### Copyright (c) 2023 Robert W Schell]")
+st.sidebar.markdown(":gray[Developer: Robert W Schell, Data Scientist at Artificial Intelligentsia, LLC]")
+st.sidebar.markdown(":gray[Github:    https://github.com/schellrw/]")
+st.sidebar.markdown(":gray[LinkedIn:  https://linkedin.com/in/schellr/]")
+st.sidebar.markdown(":gray[###### MIT License]")
+st.sidebar.markdown(":gray[###### Copyright (c) 2023 Robert W Schell]")
 
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
-st.title('''
-         :red[Redfin U.S. Real Estate Heatmap]''')
+st.title(":red[Redfin U.S. Real Estate Heatmap]")
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
+st.subheader(":blue[Your company's information paired with our market research and technology solutions.        Actionable insights and opportunities for your business"])
+st.subheader(":violet[Take out your competition]", divider="rainbow")
+st.subheader(":red[Predominantly]")
+
 st.subheader('''
              :blue[Insight and opportunity for your business.                   
              Your data paired with market trends and information acquired from reputable public sources, or private.]
