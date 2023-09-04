@@ -48,7 +48,7 @@ df_final["Median Sale Price"] = df_final["Median Sale Price"].astype(int)
 df_final["Median Sale Price YoY"] = df_final["Median Sale Price YoY"].astype(int)
 df_final["Homes Sold"] = df_final["Homes Sold"].astype(int)
 df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_period('M')
-df_final["Month"] = df_final["Month"].astype(str) #(int)
+#df_final["Month"] = df_final["Month"].astype(str) #(int)
 
 #df_final['Month'] = dt.datetime(df_final['Month'], format='%Y-').dt.to_period('M')
 #pd.to_datetime(df_final['Month'], format='%b %Y')
