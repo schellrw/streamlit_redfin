@@ -60,7 +60,7 @@ st.title("Redfin U.S. Real Estate Heatmap")
 st.subheader('''
              :red[Insights from public data resources coupled with your proprietary business information.]''')
 st.subheader('''
-             :orange[*What markets are you in?*] :blue[*What metrics matter to you?*] :violet[*How do you want your business to grow?*] :pink[*How far do you want to go?*]''')
+             :orange[*What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
 st.subheader('''
              :green[Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:]  https://artificialintelligentsia.com/''') ## FIX CONTACT PAGE NAME:: https://artificialintelligentsia.com/?page_id=21")
 # st.markdown("##### MIT License Copyright (c) 2023 Robert W Schell")
