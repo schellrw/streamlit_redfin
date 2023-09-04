@@ -39,18 +39,19 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 #Add sidebar to the app
 ####st.sidebar.markdown("# Redfin Housing Data")
 ##st.sidebar.markdown("## July 2022 to July 2023")
-st.sidebar.markdown("# Developed by Artificial Intelligentsia, LLC")
-st.sidebar.markdown("## AI/ML Technology & Modernization Solutions")
-st.sidebar.markdown("### For Your Business")
-st.sidebar.markdown("Contact Us:          https://artificialintelligentsia.com/")
-st.sidebar.markdown("public redfin repo:  https://github.com/schellrw/streamlit_redfin")
-st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage:  https://www.redfin.com/news/data-center")
-st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the United States real estate market.")
-st.sidebar.markdown("Developer: Robert W Schell, CIO of Artificial Intelligentsia, LLC")
-st.sidebar.markdown("Github:    https://github.com/schellrw/")
-st.sidebar.markdown("LinkedIn:  https://linkedin.com/in/schellr/")
-st.sidebar.markdown("#### MIT License")
-st.sidebar.markdown("#### Copyright (c) 2023 Robert W Schell")
+st.sidebar.markdown("Developed by Artificial Intelligentsia, LLC")
+#st.sidebar.markdown("# Developed by Artificial Intelligentsia, LLC")
+st.sidebar.markdown("Contact us for AI/ML Technology Solutions & Business Modernization!") # Solutions")
+#st.sidebar.markdown("### For Your Business")
+st.sidebar.markdown("### https://artificialintelligentsia.com/")
+st.sidebar.markdown("##### repo for this site:  https://github.com/schellrw/streamlit_redfin")
+st.sidebar.markdown("*All data provided by Redfin, a national real estate brokerage:*  https://www.redfin.com/news/data-center")
+st.sidebar.markdown(":blue[This app was built using Python and Streamlit to visualize activity in the United States real estate market.]")
+st.sidebar.markdown(":green[Developer: Robert W Schell, Data Scientist at Artificial Intelligentsia, LLC]")
+st.sidebar.markdown(":green[Github:    https://github.com/schellrw/]")
+st.sidebar.markdown(":green[LinkedIn:  https://linkedin.com/in/schellr/]")
+st.sidebar.markdown(":violet[###### MIT License]")
+st.sidebar.markdown(":violet[###### Copyright (c) 2023 Robert W Schell]")
 
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
@@ -62,8 +63,7 @@ st.subheader('''
              :blue[Insights from public data resources coupled with your proprietary business information.]''', divider="rainbow")
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
-st.markdown('''
-             :green[*Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:*]  https://artificialintelligentsia.com/''') ## FIX CONTACT PAGE NAME:: https://artificialintelligentsia.com/?page_id=21")
+st.markdown("### https://artificialintelligentsia.com/")
 # st.markdown("##### MIT License Copyright (c) 2023 Robert W Schell")
 
 #Create three columns/filters
