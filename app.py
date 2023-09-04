@@ -131,7 +131,7 @@ geojson1 = folium.features.GeoJson(
                tooltip=folium.features.GeoJsonTooltip(
                    fields=["Month",
                            "State",
-                           metrics+':',],
+                           metrics,],
                    aliases=['Period',
                            'ste_stusps_code',
                             metrics+':'],
