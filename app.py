@@ -102,7 +102,7 @@ folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
-    geo_data=gdf, ####'./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
+    geo_data='./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
     name='Heat Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
     columns=['State', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
