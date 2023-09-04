@@ -39,10 +39,10 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 #Add sidebar to the app
 st.sidebar.markdown("# Redfin Housing Data")
 ##st.sidebar.markdown("## July 2022 to July 2023")
-st.sidebar.markdown("""# Developed by Artificial Intelligentsia, LLC
+st.sidebar.markdown("""## Developed by Artificial Intelligentsia, LLC
                        ## AI/ML Technology & Modernization Specialists""")
 #st.sidebar.markdown("## AI/ML Technology & Modernization Specialists")
-st.sidebar.markdown("# https://artificialintelligentsia.com/")
+st.sidebar.markdown("https://artificialintelligentsia.com/")
 st.sidebar.markdown("public github repo:  https://github.com/schellrw/streamlit_redfin")
 st.sidebar.markdown("RW Schell github:    https://github.com/schellrw/")
 st.sidebar.markdown("RW Schell linkedIn:  https://linkedin.com/in/schellr/")
