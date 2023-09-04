@@ -55,7 +55,7 @@ st.sidebar.markdown("#### Copyright (c) 2023 Robert W Schell")
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
 st.title('''
-         :red[Redfin U.S. Real Estate Heatmap''')
+         :red[Redfin U.S. Real Estate Heatmap]''')
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
 st.subheader('''
@@ -63,7 +63,7 @@ st.subheader('''
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
 st.markdown('''
-             :green[### *Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:*]  https://artificialintelligentsia.com/''') ## FIX CONTACT PAGE NAME:: https://artificialintelligentsia.com/?page_id=21")
+             :green[*Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:*]  https://artificialintelligentsia.com/''') ## FIX CONTACT PAGE NAME:: https://artificialintelligentsia.com/?page_id=21")
 # st.markdown("##### MIT License Copyright (c) 2023 Robert W Schell")
 
 #Create three columns/filters
