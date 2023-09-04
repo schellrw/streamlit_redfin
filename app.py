@@ -13,7 +13,7 @@ def read_csv(path):
 
 housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
-housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-07-01') & (housing_price_df['period_begin']<='2023-07-01')]
+#housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-07-01') & (housing_price_df['period_begin']<='2023-07-01')]
 
 @st.cache_data
 def read_file(path):
@@ -38,14 +38,22 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 
 #Add sidebar to the app
 st.sidebar.markdown("# Redfin Housing Data")
-st.sidebar.markdown("## July 2022 to July 2023")
+##st.sidebar.markdown("## July 2022 to July 2023")
+st.sidebar.markdown("Developed by Robert W. Schell, CIO of Artificial Intelligentsia, LLC, AI/ML Technology & Modernization for Small Business.")
+st.sidebar.markdown("https://artificialintelligentsia.com/")
+st.sidebar.markdown("Redfin repo Github:  https://github.com/schellrw/streamlit_redfin")
+st.sidebar.markdown("R.W. Schell Github:  https://github.com/schellrw/")
+st.sidebar.markdown("R.W. Schell LinkedIn:  https://linkedin.com/in/schellr/")
 st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the U.S. real estate market.")
-st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center")
-st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw/streamlit_redfin")
+st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage:  https://www.redfin.com/news/data-center")
+# st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
-st.title("U.S. Real Estate Activity Heatmap")
-st.markdown("Where are the hottest housing markets in the U.S.?  Select the housing market metrics you are interested in and your insights are just a couple clicks away.") # Hover over the map to view more details.")
+st.title("Redfin U.S. Real Estate Heatmap")
 
+#st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
+st.subheader("Insights from public data resources coupled with your proprietary business information.")
+st.markdown("## What market are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?")
+st.markdown("## Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:  https://artificialintelligentsia.com/?page_id=21")
 #Create three columns/filters
 col1, col2, col3 = st.columns(3) ########), col4 = st.columns(4)
 
@@ -127,3 +135,5 @@ geojson1 = folium.features.GeoJson(
                    max_width=800,),
                     highlight_function=lambda x: {'weight':3,'fillColor':'grey'},
                    ).add_to(m)
+
+st.write(df_final) 
