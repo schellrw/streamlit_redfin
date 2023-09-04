@@ -43,21 +43,26 @@ st.sidebar.markdown("# Developed by Artificial Intelligentsia, LLC")
 st.sidebar.markdown("## AI/ML Technology & Modernization Solutions")
 st.sidebar.markdown("### For Your Business")
 st.sidebar.markdown("Contact Us:          https://artificialintelligentsia.com/")
-st.sidebar.markdown("public github repo:  https://github.com/schellrw/streamlit_redfin")
+st.sidebar.markdown("public redfin repo:  https://github.com/schellrw/streamlit_redfin")
 st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage:  https://www.redfin.com/news/data-center")
 st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the United States real estate market.")
-st.sidebar.markdown("RW Schell github:    https://github.com/schellrw/")
-st.sidebar.markdown("RW Schell linkedIn:  https://linkedin.com/in/schellr/")
-st.sidebar.markdown("#### MIT License   Copyright (c) 2023 Robert W Schell")
+st.sidebar.markdown("Developer: Robert W Schell, CIO of Artificial Intelligentsia, LLC")
+st.sidebar.markdown("Github:    https://github.com/schellrw/")
+st.sidebar.markdown("LinkedIn:  https://linkedin.com/in/schellr/")
+st.sidebar.markdown("#### MIT License")
+st.sidebar.markdown("#### Copyright (c) 2023 Robert W Schell")
 
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
 st.title("Redfin U.S. Real Estate Heatmap")
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.") # Hover over the map to view more details.")
-st.subheader("Insights from public data resources coupled with your proprietary business information.")
-st.markdown("#### What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?")
-st.markdown("#### Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:  https://artificialintelligentsia.com/") ## FIX CONTACT PAGE NAME:: https://artificialintelligentsia.com/?page_id=21")
+st.subheader('''
+             :red[Insights from public data resources coupled with your proprietary business information.]''')
+st.subheader('''
+             :orange[*What markets are you in?*] :blue[*What metrics matter to you?*] :violet[*How do you want your business to grow?*] :pink[*How far do you want to go?*]''')
+st.subheader('''
+             :green[Competitive intelligence for your business from streamlined and affordable technology solutions are just a click away:]  https://artificialintelligentsia.com/''') ## FIX CONTACT PAGE NAME:: https://artificialintelligentsia.com/?page_id=21")
 # st.markdown("##### MIT License Copyright (c) 2023 Robert W Schell")
 
 #Create three columns/filters
