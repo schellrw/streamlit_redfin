@@ -72,7 +72,7 @@ with col1:
      year_month = st.selectbox("Select Year-Month", period_list, index=0)
 
 with col2:
-     state_list = df_final['State'].unique().tolist()
+     state_list = df_final['State'].unique().tolist(str)
      state_sorted = sorted(state_list) # state_list.sort(reverse=False)
      state = st.selectbox("Select State", state_sorted, index=0)
 
