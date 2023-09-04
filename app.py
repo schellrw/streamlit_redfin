@@ -88,8 +88,7 @@ with col4:
 df_final = df_final[df_final["Month"]==year_month]
 df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
-df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", 
-                     metrics,'ste_stusps_code','geometry']]
+df_final = df_final[["Month", "State", "Type of Property", metrics,'geometry','ste_stusps_code']]
 
 #st.write(df_final)
 
@@ -104,14 +103,14 @@ folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 
 #df_final = df_final.replace(np.nan, pd.NA)
 #df_final = df_final.replace(pd.NA, 0) #np.nan)
-df_final = df_final.replace(np.nan, np.nan_to_num(0)) #np.nan)
+####df_final = df_final.replace(np.nan, np.nan_to_num(0)) #np.nan)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
     geo_data='./input/georef-united-states-of-america-state.geojson', #geo_data.to_json(), ##df_final.to_json(),  ####       # Geojson file for the United States
     name="Choropleth (Heat Map) of U.S. Housing Prices",
     data=df_final, #.replace(np.nan, pd.NA), #df_final.is_null(), #df_final to_json(), #df_ungeo, #.to_json(), #df_ungeo, #ungeo, #.to_json(), #  df_final.to_json(),                                                          # df from the data preparation and user selection
-    columns=['ste_stusps_code', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
+    columns=['State', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
     key_on='feature.properties.ste_stusps_code',                            # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
