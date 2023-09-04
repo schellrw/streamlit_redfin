@@ -105,7 +105,7 @@ df_ungeo = df_final.drop(['geometry'], axis=1)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
-    geo_data=geo_data, #gdf.to_json(), ##df_final.to_json(),  ####'./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
+    geo_data=geo_data.to_json(), #gdf.to_json(), ##df_final.to_json(),  ####'./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
     name="Choropleth (Heat Map) of U.S. Housing Prices",
     data=df_ungeo,                                                          # df from the data preparation and user selection
     columns=['State', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
