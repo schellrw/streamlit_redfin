@@ -74,10 +74,12 @@ df_final = df_final[["Month", 'ste_stusps_code', "Type of Property", metrics,'ge
 
 @st.cache_data
 def write_df(df):
-    return st.write(df)
+    dfx = st.write(df)
+    return dfx
 
 # Output write info
-write_df(df_final) 
+df_io = write_df(df_final) 
+df_io
 
 #Initiate a folium map
 m = folium.Map(location=[40, -96], zoom_start=4,tiles=None)
