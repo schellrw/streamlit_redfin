@@ -83,9 +83,9 @@ df_final = df_final[["Month", 'ste_stusps_code', "Type of Property", metrics,'ge
 
 #Initiate a folium map
 m = folium.Map(location=[40, -96], zoom_start=4,tiles=None)
-## folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
+ folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 ## Other map layers:
-folium.TileLayer('DarkMatter',name="Dark Map",control=False).add_to(m) #### folium.TileLayer('OpenStreetMap').add_to(m)
+##folium.TileLayer('DarkMatter',name="Dark Map",control=False).add_to(m) #### folium.TileLayer('OpenStreetMap').add_to(m)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
