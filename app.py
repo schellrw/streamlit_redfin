@@ -42,7 +42,7 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 #st.sidebar.title("Site Information")
 st.sidebar.title("Developed at Artificial Intelligentsia, LLC")
 #st.sidebar.markdown("# Developed by Artificial Intelligentsia, LLC")
-st.sidebar.markdown("# Contact us for AI/ML Technology Solutions & Business Modernization:    https://artificialintelligentsia.com/") # Solutions")
+st.sidebar.markdown("## Contact us for AI/ML Technology Solutions & Business Modernization:    https://artificialintelligentsia.com/") # Solutions")
 #st.sidebar.markdown("### For Your Business")
 ####    st.sidebar.markdown("### https://artificialintelligentsia.com/")
 st.sidebar.markdown(":blue[This app was built using Python and Streamlit to visualize activity in the United States real estate market.]")
@@ -50,7 +50,7 @@ st.sidebar.markdown(":gray[Developer: Robert W Schell, Data Scientist, Artificia
 st.sidebar.markdown(":gray[Github:    https://github.com/schellrw/]")
 st.sidebar.markdown(":gray[LinkedIn:  https://linkedin.com/in/schellr/]")
 st.sidebar.markdown(":gray[All data provided by Redfin, a national real estate brokerage firm:    https://www.redfin.com/news/data-center/]")
-st.sidebar.markdown(":gray[Public site repository:    https://github.com/schellrw/streamlit_redfin/]")
+st.sidebar.markdown(":gray[Public site repository:    https://github.com/schellrw/streamlit_redfin]")
 st.sidebar.markdown(":gray[MIT License]")
 st.sidebar.markdown(":gray[Copyright (c) 2023 Artificial Intelligentsia, LLC]")
 
