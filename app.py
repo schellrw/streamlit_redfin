@@ -13,7 +13,7 @@ def read_csv(path):
 
 housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
-#housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-07-01') & (housing_price_df['period_begin']<='2023-07-01')]
+housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2020-01-01') & (housing_price_df['period_begin']<='2023-07-01')]
 
 @st.cache_data
 def read_file(path):
@@ -37,17 +37,18 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 #df_final["Month"] = df_final["Month"].astype(str) ##(int) ####pd.to_datetime(df_final['Month'], format='%b %Y')
 
 #Add sidebar to the app
-st.sidebar.markdown("# Redfin Housing Data")
+####st.sidebar.markdown("# Redfin Housing Data")
 ##st.sidebar.markdown("## July 2022 to July 2023")
-st.sidebar.markdown("## Developed by Artificial Intelligentsia, LLC     AI/ML Technology & Modernization")
-#st.sidebar.markdown("## AI/ML Technology & Modernization Specialists")
-st.sidebar.markdown("https://artificialintelligentsia.com/")
+st.sidebar.markdown("# Developed by Artificial Intelligentsia, LLC")
+st.sidebar.markdown("## AI/ML Technology & Modernization Solutions")
+st.sidebar.markdown("### For Your Business")
+st.sidebar.markdown("Contact Us:          https://artificialintelligentsia.com/")
 st.sidebar.markdown("public github repo:  https://github.com/schellrw/streamlit_redfin")
-st.sidebar.markdown("RW Schell github:    https://github.com/schellrw/")
-st.sidebar.markdown("RW Schell linkedIn:  https://linkedin.com/in/schellr/")
 st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage:  https://www.redfin.com/news/data-center")
 st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the United States real estate market.")
-st.sidebar.markdown("#### MIT License Copyright (c) 2023 Robert W Schell")
+st.sidebar.markdown("RW Schell github:    https://github.com/schellrw/")
+st.sidebar.markdown("RW Schell linkedIn:  https://linkedin.com/in/schellr/")
+st.sidebar.markdown("#### MIT License   Copyright (c) 2023 Robert W Schell")
 
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
