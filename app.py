@@ -124,7 +124,7 @@ folium_static(m)
 
 #Add tooltips to the map
 geojson1 = folium.features.GeoJson(
-               data=df_final,
+               data=df_final['geometry'],
                name='United States Housing Prices',
                smooth_factor=2,
                style_function=lambda x: {'color':'black','fillColor':'transparent','weight':0.5},
