@@ -92,7 +92,7 @@ choropleth1 = folium.Choropleth(
     geo_data='./input/georef-united-states-of-america-state.geojson', ##df_final.to_json(),  ####  # Geojson file for the United States
     name="Choropleth (Heat Map) of U.S. Housing Prices",
     data=df_final, # df from the data preparation and user selection
-    columns=['State', metrics], # Or "State" now is key? # 'state code' and 'metrics' to get the median sales price for each state
+    columns=['ste_stusps_code', metrics], # Or "State" now is key? # 'state code' and 'metrics' to get the median sales price for each state
     key_on='feature.properties.ste_stusps_code',  # key in the geojson file that we use to grab each state boundary layers
     fill_color='YlGn',
     nan_fill_color="White",
@@ -110,7 +110,7 @@ geojson1 = folium.features.GeoJson(
                style_function=lambda x: {'color':'black','fillColor':'transparent','weight':0.5},
                tooltip=folium.features.GeoJsonTooltip(
                    fields=["Month",
-                           "State",
+                           "state_code",
                            metrics,],
                    aliases=['Period',
                            'ste_stusps_code',
