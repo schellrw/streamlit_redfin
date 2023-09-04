@@ -64,7 +64,8 @@ st.subheader(":blue[Actionable insights and opportunities for your business to] 
 #st.subheader(":red[Pre-Dominantly]", divider="rainbow")
 # st.subheader('''
 #              :orange[### *What markets are you in?  What metrics matter to you?  How do you want your business to grow?  How far do you want to go?*]''')
-st.markdown("### Let us be the competitive intelligence company that helps you find the best way to win, AND KEEP WINNING!")
+st.markdown(":green[Let us be the competitive intelligence company that helps you find the best way to win,]") 
+st.markdown(":green[AND KEEP WINNING!]")   #":green[Increase revenue, attract/retain customers,  ")
 st.markdown("### https://artificialintelligentsia.com/")
 # st.markdown("##### MIT License Copyright (c) 2023 Robert W Schell")
 
