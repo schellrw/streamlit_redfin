@@ -73,8 +73,8 @@ with col1:
 
 with col2:
      state_list = df_final['State'].unique().tolist()
-     state_list.sort(alpha=True, reverse=False)
-     state = st.selectbox("Select State", state_list, index=0)
+     state_sorted = sorted(state_list) # state_list.sort(reverse=False)
+     state = st.selectbox("Select State", state_sorted, index=0)
 
 with col3:
      prop_type = st.selectbox("View by Property Type", ['All Residential', 'Single Family Residential', 
