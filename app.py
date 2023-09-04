@@ -90,7 +90,7 @@ df_final = df_final[df_final["Month"]==year_month]
 #df_final = df_final[df_final["State"]==state]
 df_final = df_final[df_final["Type of Property"]==prop_type]
 df_final = df_final[["Month", "State", "Type of Property", "Median Sale Price", "Median Sale Price YoY", "Homes Sold", 
-                     metrics,'ste_stusps_code','geometry']].reset_index(drop=True) #, inplace=True)
+                     metrics,'ste_stusps_code','geometry']]
 
 #st.write(df_final)
 
