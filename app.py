@@ -39,19 +39,22 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 #Add sidebar to the app
 ####st.sidebar.markdown("# Redfin Housing Data")
 ##st.sidebar.markdown("## July 2022 to July 2023")
-st.sidebar.markdown(":blue[This app was built using Python and Streamlit to visualize activity in the United States real estate market.]")
-st.sidebar.markdown("##### Site repository:  https://github.com/schellrw/streamlit_redfin")
-st.sidebar.markdown(":gray[Developer: Robert W Schell, Data Scientist at Artificial Intelligentsia, LLC]")
-st.sidebar.markdown(":gray[Github:    https://github.com/schellrw/]")
-st.sidebar.markdown(":gray[LinkedIn:  https://linkedin.com/in/schellr/]")
-st.sidebar.markdown("### Developed at Artificial Intelligentsia, LLC")
+st.sidebar.title("Site Information")
+st.sidebar.markdown("## Developed at Artificial Intelligentsia, LLC")
 #st.sidebar.markdown("# Developed by Artificial Intelligentsia, LLC")
-st.sidebar.markdown("### Contact us for AI/ML Technology Solutions & Business Modernization!") # Solutions")
+st.sidebar.markdown("## Contact us for AI/ML Technology Solutions & Business Modernization!  https://artificialintelligentsia.com/") # Solutions")
 #st.sidebar.markdown("### For Your Business")
-st.sidebar.markdown("### https://artificialintelligentsia.com/")
-st.sidebar.markdown("#### *All data provided by Redfin, a national real estate brokerage:*  https://www.redfin.com/news/data-center")
-st.sidebar.markdown("#### MIT License")
-st.sidebar.markdown("#### Copyright (c) 2023 Artificial Intelligentsia, LLC")
+####    st.sidebar.markdown("### https://artificialintelligentsia.com/")
+st.sidebar.markdown(":blue[### This app was built using Python and Streamlit to visualize activity in the United States real estate market.]")
+
+st.sidebar.markdown(":gray[### Developer: Robert W Schell, Data Scientist, Artificial Intelligentsia, LLC]")
+st.sidebar.markdown(":gray[### Github:    https://github.com/schellrw/]")
+st.sidebar.markdown(":gray[### LinkedIn:  https://linkedin.com/in/schellr/]")
+
+st.sidebar.markdown("#### All data provided by Redfin, a national real estate brokerage firm  https://www.redfin.com/news/data-center")
+st.sidebar.markdown("##### Site repository:  https://github.com/schellrw/streamlit_redfin")
+st.sidebar.markdown("##### MIT License")
+st.sidebar.markdown("##### Copyright (c) 2023 Artificial Intelligentsia, LLC")
 
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
