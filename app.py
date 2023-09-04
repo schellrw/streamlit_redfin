@@ -39,13 +39,13 @@ df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_
 #Add sidebar to the app
 st.sidebar.markdown("# Redfin Housing Data")
 ##st.sidebar.markdown("## July 2022 to July 2023")
-st.sidebar.markdown("Developed by Robert W. Schell, CIO of Artificial Intelligentsia, LLC, AI/ML Technology & Modernization for Small Business.")
+st.sidebar.markdown("Developed by RW Schell   CIO of Artificial Intelligentsia, LLC   AI/ML Technology & Modernization Specialists")
 st.sidebar.markdown("https://artificialintelligentsia.com/")
-st.sidebar.markdown("Redfin repo Github:  https://github.com/schellrw/streamlit_redfin")
-st.sidebar.markdown("R.W. Schell Github:  https://github.com/schellrw/")
-st.sidebar.markdown("R.W. Schell LinkedIn:  https://linkedin.com/in/schellr/")
-st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the U.S. real estate market.")
+st.sidebar.markdown("Public repository @Github:  https://github.com/schellrw/streamlit_redfin")
+st.sidebar.markdown("RW Schell @Github:  https://github.com/schellrw/")
+st.sidebar.markdown("RW Schell @LinkedIn:  https://linkedin.com/in/schellr/")
 st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage:  https://www.redfin.com/news/data-center")
+st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the United States real estate market.")
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 #Add title and subtitle to the main interface of the app
 st.title("Redfin U.S. Real Estate Heatmap")
