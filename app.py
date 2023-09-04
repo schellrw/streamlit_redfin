@@ -14,7 +14,7 @@ def read_csv(path):
 
 housing_price_df = read_csv('./input/state_market_tracker.tsv000.gz')
 housing_price_df = housing_price_df[['period_begin','period_end','period_duration','property_type','median_sale_price','median_sale_price_yoy','homes_sold','state_code']]
-housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-09-01') & (housing_price_df['period_begin']<='2023-09-01')]
+housing_price_df = housing_price_df[(housing_price_df['period_begin']>='2022-07-01') & (housing_price_df['period_begin']<='2023-07-01')]
 
 @st.cache_data
 def read_file(path):
@@ -44,18 +44,18 @@ df_final = df_final.rename(columns={'period_begin':"Period",'property_type':"Typ
                                     'median_sale_price_yoy':"Median Sale Price YoY",'homes_sold':"Homes Sold",'state_code':"State",
                                     'geometry':"Location"})
 
-df_final["Median Sale Price"] = df_final["Median Sale Price"].astype(str) #(int)
-df_final["Median Sale Price YoY"] = df_final["Median Sale Price YoY"].astype(str) #(int)
-df_final["Homes Sold"] = df_final["Homes Sold"].astype(str) #(int)
-####df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_period('M')
-df_final["Month"] = df_final["Period"].astype(str) #(int)
+# df_final["Median Sale Price"] = df_final["Median Sale Price"].astype(str) #(int)
+# df_final["Median Sale Price YoY"] = df_final["Median Sale Price YoY"].astype(str) #(int)
+# df_final["Homes Sold"] = df_final["Homes Sold"].astype(str) #(int)
+df_final["Month"] = pd.to_datetime(df_final["Period"], format='%Y-%m-%d').dt.to_period('M')
+# df_final["Month"] = df_final["Period"].astype(str) #(int)
 
 #df_final['Month'] = dt.datetime(df_final['Month'], format='%Y-').dt.to_period('M')
 #pd.to_datetime(df_final['Month'], format='%b %Y')
 
 #Add sidebar to the app
 st.sidebar.markdown("# Redfin Housing Data")
-st.sidebar.markdown("### Sep 2022 to July 2023")
+st.sidebar.markdown("## July 2022 to July 2023")
 st.sidebar.markdown("This app was built using Python and Streamlit to visualize activity in the U.S. real estate market.")
 st.sidebar.markdown("Data provided by Redfin, a national real estate brokerage: https://www.redfin.com/news/data-center")
 st.sidebar.markdown("Developed by Robert Schell: https://github.com/schellrw/streamlit_redfin")
@@ -102,7 +102,7 @@ folium.TileLayer('CartoDB positron', name="Light Map", control=False).add_to(m)
 
 #Plot Choropleth map using folium
 choropleth1 = folium.Choropleth(
-    geo_data='./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
+    geo_data=gdf, ####'./input/georef-united-states-of-america-state.geojson',       # Geojson file for the United States
     name='Heat Map of U.S. Housing Prices',
     data=df_final,                                                          # df from the data preparation and user selection
     columns=['State', metrics], # Or "State" now is key?          # 'state code' and 'metrics' to get the median sales price for each state
